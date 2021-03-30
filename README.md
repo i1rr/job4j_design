@@ -1,2 +1,1 @@
-
-Here is my Java junior course.
+# job4j_design
