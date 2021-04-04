@@ -1,5 +1,6 @@
 package ru.job4j.it;
 
+import javax.sql.rowset.serial.SerialArray;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -14,18 +15,15 @@ public class MatrixIt implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        for (int[] rr : data) {
-            if (exArrPointer < data.length && inArrPointer < data[exArrPointer].length) {
+        while (exArrPointer < data.length) {
+            if (inArrPointer < data[exArrPointer].length) {
                 return true;
-            } else {
-                if (exArrPointer < data.length) {
-                    exArrPointer++;
-                    inArrPointer = 0;
-                }
             }
-        }
+                exArrPointer++;
+                inArrPointer = 0;
+            }
         return false;
-        }
+    }
 
     @Override
     public Integer next() {
