@@ -5,23 +5,17 @@ import java.util.NoSuchElementException;
 
 public class EvenIt implements Iterator<Integer> {
 
-    private final int[] data;
+    private final double[] data;
     private int pointer;
 
-    public EvenIt(int[] data) {
+    public EvenIt(double[] data) {
         this.data = data;
     }
 
     @Override
     public boolean hasNext() {
-        boolean check;
-        for (int i = pointer; i < data.length; i++) {
-           check = data[i] % 2 == 0;
-           if (check) {
-               break;
-           } else {
-               ++pointer;
-           }
+        while (pointer < data.length && data[pointer] % 2 != 0) {
+            pointer++;
         }
         return pointer < data.length;
     }
@@ -31,6 +25,6 @@ public class EvenIt implements Iterator<Integer> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        return data[pointer++];
+        return (int) data[pointer++];
     }
 }
