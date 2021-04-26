@@ -5,10 +5,10 @@ import java.util.NoSuchElementException;
 
 public class EvenIt implements Iterator<Integer> {
 
-    private final double[] data;
+    private final int[] data;
     private int pointer;
 
-    public EvenIt(double[] data) {
+    public EvenIt(int[] data) {
         this.data = data;
     }
 
