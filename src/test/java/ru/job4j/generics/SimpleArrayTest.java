@@ -1,12 +1,9 @@
 package ru.job4j.generics;
 
 import org.junit.Test;
-
 import java.util.Iterator;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
 
 public class SimpleArrayTest {
     @Test
@@ -39,7 +36,6 @@ public class SimpleArrayTest {
         test.add(4);
         test.remove(0);
         assertThat(test.get(1), is(3));
-        assertThat(test.get(4), is(nullValue()));
     }
 
     @Test

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class SimpleArray<T> implements Iterable<T> {
     private final T[] simpleArray;
-    private int index = 0;
+    private int pointer = 0;
     private final int arrayLength;
 
     public SimpleArray(int size) {
@@ -16,31 +16,27 @@ public class SimpleArray<T> implements Iterable<T> {
 
     //Adds an element to the next empty cell
     public void add(T model) {
-            simpleArray[index++] = model;
+            simpleArray[pointer++] = model;
     }
 
     //Replaces an element[index] with provided model
     public void set(int index, T model) {
-        indexCheck();
+        Objects.checkIndex(index, pointer);
         simpleArray[index] = model;
     }
 
     //Removes an element and merges the array
     public void remove(int index) {
-        indexCheck();
-        System.arraycopy(simpleArray, index + 1, simpleArray, index, arrayLength - index - 1);
-        simpleArray[arrayLength - 1] = null;
+        Objects.checkIndex(index, pointer);
+        System.arraycopy(simpleArray, index + 1, simpleArray, index, pointer - index - 1);
+        simpleArray[pointer] = null;
+        pointer--;
     }
 
     //Returns an element with provided index
     public T get(int index) {
-        indexCheck();
+        Objects.checkIndex(index, pointer);
         return simpleArray[index];
-    }
-
-    //Lazy usage of method
-    private void indexCheck() {
-        Objects.checkIndex(index, arrayLength + 1);
     }
 
     //Также, реализуйте интерфейс Iterable<T> - метод iterator() возвращает итератор,
@@ -60,12 +56,11 @@ public class SimpleArray<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
-
-            private int index = 0;
+            private int itPointer = 0;
 
             @Override
             public boolean hasNext() {
-                return index < arrayLength;
+                return itPointer < pointer;
             }
 
             @Override
@@ -73,7 +68,7 @@ public class SimpleArray<T> implements Iterable<T> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return simpleArray[index++];
+                return simpleArray[itPointer++];
             }
         };
     }
