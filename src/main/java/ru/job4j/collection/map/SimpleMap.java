@@ -18,14 +18,14 @@ public class SimpleMap<K, V> implements Map<K, V> {
     }
 
     private int indexFor(int hash) {
-        return hash & table.length - 1;
+        return hash & (table.length - 1);
     }
 
     public void expand() {
-        capacity *= 1.75;
+        capacity *= 2;
         MapEntry<K, V>[] temp = table;
         table = new MapEntry[capacity];
-        for (MapEntry<K, V> rr : table) {
+        for (MapEntry<K, V> rr : temp) {
             if (rr != null) {
                 put(rr.key, rr.value);
             }
