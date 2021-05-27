@@ -23,6 +23,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     public void expand() {
         capacity *= 2;
+        count = 0;
         MapEntry<K, V>[] temp = table;
         table = new MapEntry[capacity];
         for (MapEntry<K, V> rr : temp) {
@@ -39,7 +40,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
     @Override
     public boolean put(K key, V value) {
         int index = indexFor(hash(key.hashCode()));
-        if (count / LOAD_FACTOR >= table.length) {
+        if (((double) count / table.length) > LOAD_FACTOR) {
             expand();
         }
 
