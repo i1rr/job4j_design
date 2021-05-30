@@ -9,6 +9,8 @@ public interface Tree<E> {
 
     Optional<Node<E>> findBy(E value);
 
+    boolean isBinary();
+
     class Node<E> {
         private final E value;
         private final List<Node<E>> children = new ArrayList<>();
