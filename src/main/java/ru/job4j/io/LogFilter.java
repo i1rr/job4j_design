@@ -1,7 +1,6 @@
 package ru.job4j.io;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,11 +24,25 @@ public class LogFilter {
         return lines;
     }
 
+    public static void save(List<String> log, String file) {
+        try (PrintWriter out = new PrintWriter(
+                new BufferedOutputStream(
+                        new FileOutputStream(file)
+                ))) {
+            for (String str : log) {
+                out.write(str + System.lineSeparator());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         ArrayList<String> list = getFileToArrayList("log.txt");
         List<String> log = filter(list, "404");
         for (String string : log) {
             System.out.println(string);
         }
+        save(log, "404.txt");
     }
 }
