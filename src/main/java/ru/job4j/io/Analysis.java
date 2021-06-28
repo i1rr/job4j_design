@@ -2,6 +2,7 @@ package ru.job4j.io;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Analysis {
     private boolean serverUp = true;
@@ -12,7 +13,7 @@ public class Analysis {
         generateReport(target);
     }
 
-    public ArrayList<String> load(String file) {
+    public List<String> load(String file) {
         ArrayList<String> rsl = new ArrayList<>();
         try (BufferedReader in = new BufferedReader(new FileReader(file))) {
             in.lines().filter(line -> !line.isEmpty()).forEach(rsl::add);
