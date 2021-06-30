@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ru.job4j</groupId>
-  <artifactId>tracker</artifactId>
+  <artifactId>job4j_design</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
 
@@ -85,6 +85,27 @@
         <configuration>
           <javadocExecutable>/Users/i1/Library/Java/JavaVirtualMachines/openjdk-15.0.2/Contents/Home/bin/javadoc</javadocExecutable>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.4</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <finalName>duplicateFinder</finalName>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>ru.job4j.io.duplicates.DuplicateFinder</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
