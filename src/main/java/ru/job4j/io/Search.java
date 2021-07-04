@@ -7,8 +7,13 @@ import java.util.function.Predicate;
 
 public class Search {
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get(".");
-        search(start, p -> p.toFile().getName().endsWith("js")).forEach(System.out::println);
+        if (args.length == 0) {
+            throw new IllegalArgumentException(
+                    "Use the following template to run the application:\n"
+                    + "java -jar search.jar folder_path file_extension");
+        }
+        Path start = Path.of(args[0]);
+        search(start, p -> p.toFile().getName().endsWith(args[1])).forEach(System.out::println);
     }
 
     public static List<Path> search(Path root, Predicate<Path> condition) throws IOException {
