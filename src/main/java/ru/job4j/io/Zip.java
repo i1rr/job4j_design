@@ -44,7 +44,7 @@ public class Zip {
     }
 
     public static void main(String[] args) throws IOException {
-        if (args.length == 0) {
+        if (args.length != 3) {
             throw new IllegalArgumentException(
                     "Use the following template to start the application:\n"
                             + "java -jar zip.jar -d=c:\\windows\\System32\\ -e=txt -o=windows.zip\n"
