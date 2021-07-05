@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 
 public class Search {
     public static void main(String[] args) throws IOException {
-        if (args.length == 0) {
+        if (args.length != 2) {
             throw new IllegalArgumentException(
                     "Use the following template to run the application:\n"
                     + "java -jar search.jar folder_path file_extension");
