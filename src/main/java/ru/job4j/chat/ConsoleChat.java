@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleChat {
-    private static final String OUT = "закончить";
-    private static final String STOP = "стоп";
-    private static final String CONTINUE = "продолжить";
+//    закончить - остановка программы
+//    стоп - отключить бота
+//    продолжить - возобновить работу бота
 
     private final String logPath;
     private final String botAnswers;
     private final List<String> botAnswerList = new ArrayList<>();
+    private final List<String> temporaryLog = new ArrayList<>();
     private boolean botOnline = true;
     private boolean live = true;
     private boolean botAnswersCopied = false;
@@ -22,12 +23,9 @@ public class ConsoleChat {
         this.botAnswers = botAnswers;
     }
 
-    public void run() {
+    public void run() throws IOException {
         Scanner scanner = new Scanner(System.in);
         String userPhrase;
-        try (FileWriter fw = new FileWriter(logPath, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter out = new PrintWriter(bw)) {
             while (live) {
                 userPhrase = scanner.nextLine();
                 if (userPhrase.equals("стоп")) {
@@ -35,18 +33,15 @@ public class ConsoleChat {
                 } else if (userPhrase.equals("продолжить")) {
                     botOnline = true;
                 }
-                out.println(userPhrase);
+                temporaryLog.add(userPhrase);
                 if (botOnline) {
-                    out.println("Бот Володя: " + botAnswer());
+                    temporaryLog.add(botAnswer());
                 }
                 if (userPhrase.equals("закончить")) {
                     live = false;
                 }
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private String botAnswer() throws IOException {
@@ -57,14 +52,29 @@ public class ConsoleChat {
             }
         }
             int rInd = (int) ((Math.random() * (botAnswerList.size())));
-        System.out.println(botAnswerList.get(rInd));
-        return botAnswerList.get(rInd);
+        String botName = "Бот Володя: ";
+        System.out.println(botName + botAnswerList.get(rInd));
+        return botName + botAnswerList.get(rInd);
     }
 
-    public static void main(String[] args) {
+    private void saveLog() {
+            try (PrintWriter out = new PrintWriter(
+                    new BufferedOutputStream(
+                            new FileOutputStream(logPath)
+                    ))) {
+                for (String str : temporaryLog) {
+                    out.println(str);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    }
+
+    public static void main(String[] args) throws IOException {
         ConsoleChat cc = new ConsoleChat(
                 "chatLog.txt",
                 "botAnswers.txt");
         cc.run();
+        cc.saveLog();
     }
 }
