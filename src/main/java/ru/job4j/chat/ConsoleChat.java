@@ -30,16 +30,16 @@ public class ConsoleChat {
         String userPhrase;
             while (live) {
                 userPhrase = scanner.nextLine();
-                if (userPhrase.equals("стоп")) {
+                if (userPhrase.equals(STOP)) {
                     botOnline = false;
-                } else if (userPhrase.equals("продолжить")) {
+                } else if (userPhrase.equals(CONTINUE)) {
                     botOnline = true;
                 }
                 temporaryLog.add(userPhrase);
                 if (botOnline) {
                     temporaryLog.add(botAnswer());
                 }
-                if (userPhrase.equals("закончить")) {
+                if (userPhrase.equals(OUT)) {
                     live = false;
                 }
             }
