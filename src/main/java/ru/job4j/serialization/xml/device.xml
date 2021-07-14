@@ -1,0 +1,13 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<device stock="true" quantity="21">
+    <type>MAC</type>
+    <laptop>
+        <name model="2020">MacBook Pro</name>
+        <serial>8839295</serial>
+    </laptop>
+    <tags>
+        <tag>Mac</tag>
+        <tag>Book</tag>
+        <tag>Apple</tag>
+    </tags>
+</device>
