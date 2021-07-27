@@ -6,7 +6,7 @@
 
   <groupId>ru.job4j</groupId>
   <artifactId>SearchTool</artifactId>
-  <version>BETA 0.1</version>
+  <version>BETA 0.2</version>
   <packaging>jar</packaging>
 
   <properties>
