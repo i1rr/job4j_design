@@ -46,7 +46,10 @@ values
 ('Баклажаны', current_date + interval '10 days', 9, 5);
 
 /*  Написать запрос получение всех продуктов с типом "СЫР" */
-select * from product where type_id = 1;
+select t.name as Тип, p.name as Продукт
+from product as p, type as t
+where t.id = p.type_id
+and t.name = 'Сыр';
 
 /*  Написать запрос получения всех продуктов, у кого в имени есть слово "мороженое" */
 select * from product where name like '%мороженое%';
@@ -65,13 +68,10 @@ on p.type_id = t.id
 group by t.name;
 
 /*  Написать запрос получение всех продуктов с типом "СЫР" и "МОЛОКО" */
-select t.name, p.name
-from product as p
-inner join type as t
-on p.type_id = t.id
-group by p.name, t.name
-having t.name = ('Сыр') or t.name = ('Молоко')
-order by t.name asc;
+select t.name as Тип, p.name as Продукт
+from product as p, type as t
+where t.id = p.type_id
+and (t.name = 'Сыр' or t.name = 'Молоко');
 
 /* Написать запрос, который выводит тип продуктов, которых осталось меньше 10 штук. */
 Под количеством подразумевается количество продуктов определенного типа. 
