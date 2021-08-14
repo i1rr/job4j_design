@@ -1,4 +1,4 @@
-package ru.job4j.psql;
+package ru.job4j.jdbc;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -24,5 +24,4 @@ public class ConnectionDemo {
             System.out.println("xyuHaHe");
         }
     }
-
 }
