@@ -32,7 +32,8 @@ public class TableEditor implements AutoCloseable {
     public void createTable(String tableName) throws Exception {
         try (Connection connection = getConnection()) {
             try (Statement statement = connection.createStatement()) {
-                String sql = "CREATE TABLE if not exists " + tableName + ";";
+                String sql = "CREATE TABLE if not exists "
+                        + tableName + "();";
                 statement.execute(sql);
             }
         }
@@ -41,7 +42,7 @@ public class TableEditor implements AutoCloseable {
     public void dropTable(String tableName) throws Exception{
         try (Connection connection = getConnection()) {
             try (Statement statement = connection.createStatement()) {
-                String sql = "DROP TABLE if exists " + tableName;
+                String sql = "DROP TABLE if exists " + tableName + ";";
                 statement.execute(sql);
             }
         }
@@ -118,7 +119,7 @@ public class TableEditor implements AutoCloseable {
         TableEditor te = new TableEditor(pps);
 
         te.createTable("test");
-        te.addColumn("test", "amount", "int");
+        te.addColumn("rego", "amount", "int");
         te.renameColumn("test", "amount", "price");
         te.dropColumn("test", "price");
         System.out.println(getTableScheme(getConnection(), "test"));
