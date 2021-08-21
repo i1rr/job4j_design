@@ -1,0 +1,6 @@
+Petr Arsentev;parsentev@yandex.ru;
+Ivan Ivanov;iivanov@gmail.com;
+Alex Priborov;pribor@gmail.com;
+Vasilij Fedotov;fedja@gmail.com;
+Maria Pilates; maria_pila@mail.ru;
+Gavriil Popenko; pop@pop.ua;
