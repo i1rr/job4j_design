@@ -42,7 +42,8 @@ public class PrepareStatementDemo {
     public boolean update(City city) {
         boolean result = false;
         try (PreparedStatement statement =
-                     connection.prepareStatement("update city set name = ?, population = ? where id = ?")) {
+                     connection.prepareStatement(
+                             "update city set name = ?, population = ? where id = ?")) {
             statement.setString(1, city.getName());
             statement.setInt(2, city.getPopulation());
             statement.setInt(3, city.getId());

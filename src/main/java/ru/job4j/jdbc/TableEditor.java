@@ -7,9 +7,9 @@ import java.util.StringJoiner;
 
 public class TableEditor implements AutoCloseable {
 
-    private Connection connection;
-
     private static Properties properties;
+
+    private Connection connection;
 
     public TableEditor(Properties properties) {
         TableEditor.properties = properties;
@@ -36,7 +36,7 @@ public class TableEditor implements AutoCloseable {
                 statementConnection(sql);
     }
 
-    public void dropTable(String tableName) throws Exception{
+    public void dropTable(String tableName) throws Exception {
                 String sql = String.format("DROP TABLE if exists %s;",
                         tableName
                 );
@@ -60,7 +60,8 @@ public class TableEditor implements AutoCloseable {
                 statementConnection(sql);
     }
 
-    public void renameColumn(String tableName, String columnName, String newColumnName) throws Exception {
+    public void renameColumn(String tableName, String columnName, String newColumnName)
+            throws Exception {
                 String sql = String.format(
                         "ALTER TABLE %s RENAME COLUMN %s TO %s;",
                         tableName,

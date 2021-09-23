@@ -22,8 +22,8 @@ public class ImportDB {
     public List<User> load() throws IOException {
         List<User> users = new ArrayList<>();
         try (BufferedReader rd = new BufferedReader(new FileReader(dump))) {
-             rd.lines().forEach( (n) -> {
-                 String [] keyValue = n.trim().split(";");
+             rd.lines().forEach((n) -> {
+                 String[] keyValue = n.trim().split(";");
                  users.add(new User(keyValue[0], keyValue[1]));
              });
         }
@@ -38,7 +38,8 @@ public class ImportDB {
                 cfg.getProperty("jdbc.password")
         )) {
             for (User user : users) {
-                try (PreparedStatement ps = cnt.prepareStatement("insert into users (name, email) values (?, ?)")) {
+                try (PreparedStatement ps = cnt.prepareStatement(
+                        "insert into users (name, email) values (?, ?)")) {
                     ps.setString(1, user.name);
                     ps.setString(2, user.email);
                     ps.execute();
@@ -48,15 +49,14 @@ public class ImportDB {
     }
 
     private static class User {
-        String name;
-        String email;
+        private String name;
+        private String email;
 
         public User(String name, String email) {
             this.name = name;
             this.email = email;
         }
     }
-
 
     public static void main(String[] args) throws Exception {
         Properties cfg = new Properties();
