@@ -14,8 +14,10 @@ public abstract class AbstractCache<K, V> {
 
     public V get(K key) {
         SoftReference<V> softValue = cache.get(key);
-        V value = softValue.get();
-        if (value == null) {
+        V value;
+        try {
+            value = softValue.get();
+        } catch (NullPointerException npe) {
             value = load(key);
             put(key, value);
         }
