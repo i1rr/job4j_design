@@ -9,9 +9,7 @@ public class ConsoleChat {
     private static final String OUT = "закончить";
     private static final String STOP = "стоп";
     private static final String CONTINUE = "продолжить";
-//    закончить - остановка программы
-//    стоп - отключить бота
-//    продолжить - возобновить работу бота
+
     private final String logPath;
     private final String botAnswers;
     private final List<String> botAnswerList = new ArrayList<>();

@@ -78,7 +78,6 @@ public class FlatMapTest {
         assertThat(1, is(flat.next()));
     }
 
-//original test has issues (just in case of possible troubles)
     @Test
     public void whenSeveralEmptyThenReturnFalse() {
         Iterator<Iterator<Object>> it = List.of(

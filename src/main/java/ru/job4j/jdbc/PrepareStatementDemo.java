@@ -15,9 +15,9 @@ public class PrepareStatementDemo {
 
     public void initConnection() throws Exception {
         Class.forName("org.postgresql.Driver");
-        String url = "jdbc:postgresql://localhost:5432/i2";
+        String url = "jdbc:postgresql://localhost:5432/";
         String login = "postgres";
-        String password = "abb5ab49";
+        String password = "password";
         connection = DriverManager.getConnection(url, login, password);
     }
 

@@ -87,7 +87,6 @@ public class Search {
             Path dirPath = Path.of(values.get("d"));
             isDir = Files.isDirectory(dirPath);
 
-            //Name(by mask) validator
             if (values.get("t").equals("mask")) {
                 String nValue = values.get("n");
                 if (!nValue.contains("*") && !nValue.contains("?")) {
@@ -95,11 +94,9 @@ public class Search {
                 }
             }
 
-            //Mask validator
             String tValue = values.get("t");
             isType = tValue.equals("name") || tValue.equals("mask") || tValue.equals("regex");
 
-            //Log path validator
             String logPath = values.get("o");
             String temp;
             if (!logPath.startsWith("/")) {

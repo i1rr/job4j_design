@@ -3,11 +3,7 @@ package ru.job4j.question;
 import java.util.Objects;
 
 public class Info {
-// - added (in current, not in previous)
-//
-// - deleted (not in current, in previous )
-//
-// - changed (id same, name changed)
+
     private int added;
     private int changed;
     private int deleted;
@@ -16,10 +12,6 @@ public class Info {
         this.added = added;
         this.changed = changed;
         this.deleted = deleted;
-    }
-
-    public int getAdded() {
-        return added;
     }
 
     public void setAdded(int added) {

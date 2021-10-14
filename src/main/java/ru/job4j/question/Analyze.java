@@ -12,9 +12,9 @@ public class Analyze {
         }
 
         for (User usrPrev : previous) {
-            if (!ids.contains(usrPrev.getId())) {      //no ID? Means DELETED
+            if (!ids.contains(usrPrev.getId())) {
                 info.setDeleted(info.getDeleted() + 1);
-            } else if (!current.contains(usrPrev)) {   //yes ID? but no USER? Means CHANGED!
+            } else if (!current.contains(usrPrev)) {
                 info.setChanged(info.getChanged() + 1);
             }
         }

@@ -42,7 +42,6 @@ public class Spell {
         list.add("18.02.2021::22:22");
         JSONArray jsonLog = new JSONArray(list);
 
-        //JSONObject using put
         final Spell spell = new Spell(true, 30, new Fireball(200),
                 "18.07.2021::21:18", "18.07.2021::21:19");
         JSONObject jsonObject = new JSONObject();
@@ -51,11 +50,9 @@ public class Spell {
         jsonObject.put("fireball", jsonFBall);
         jsonObject.put("log", jsonLog);
 
-        //JSON Obj to Console
         System.out.println(jsonObject);
         System.out.println(new JSONObject(spell));
 
-        //object to JSON string
         final Gson gson = new GsonBuilder().create();
         System.out.println(gson.toJson(spell));
 

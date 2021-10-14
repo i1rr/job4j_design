@@ -41,15 +41,15 @@ public class ForwardLinked<T> implements Iterable<T> {
 
         if (head == null || head.next == null) {
             return false;
-        } else {                                     //example array of {1, 2, 3...}
+        } else {
             Node<T> secondElement;
             Node<T> thirdElement;
-            Node<T> veryFirstHead = head;            //aka element 1
+            Node<T> veryFirstHead = head;
             do {
                 secondElement = head.next;
                 thirdElement = secondElement.next;
-                secondElement.next = head;           //element 2 links to 1
-                head = secondElement;                //new head
+                secondElement.next = head;
+                head = secondElement;
             } while (thirdElement != null);
            veryFirstHead.next = null;
         }
