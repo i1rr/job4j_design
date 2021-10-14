@@ -83,7 +83,7 @@ public class Search {
         isLogPath = values.containsKey("o");
 
         if (isDir && isName && isType && isLogPath) {
-            //Path validator
+
             Path dirPath = Path.of(values.get("d"));
             isDir = Files.isDirectory(dirPath);
 

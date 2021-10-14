@@ -33,10 +33,9 @@ public class Spell {
     }
 
     public static void main(String[] args) {
-        //JSONObject from json-String
+
         JSONObject jsonFBall = new JSONObject("{\"damage\":\"+200\"}");
 
-        //JSON Array out of ArrayList
         List<String> list = new ArrayList<>();
         list.add("18.02.2021::22:18");
         list.add("18.02.2021::22:22");
