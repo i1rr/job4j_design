@@ -1,5 +1,6 @@
 package ru.job4j.tdd;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -10,6 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNull;
 
+@Ignore
 public class CinemaTest {
 
     @Test

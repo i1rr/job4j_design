@@ -1,5 +1,6 @@
 package ru.job4j;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.Map;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+@Ignore
 public class GeneratorTest {
 
     @Test
