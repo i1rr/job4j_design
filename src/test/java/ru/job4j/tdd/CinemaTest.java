@@ -14,6 +14,7 @@ import static org.junit.Assert.assertNull;
 @Ignore
 public class CinemaTest {
 
+    @Ignore
     @Test
     public void buy() {
         Account account = new AccountCinema();
@@ -24,6 +25,7 @@ public class CinemaTest {
         assertThat(ticket, is(new Ticket3D()));
     }
 
+    @Ignore
     @Test(expected = NoAvailableTicketsException.class)
     public void whenNoAvailableTicketsLeft() {
         Account account = new AccountCinema();
@@ -33,6 +35,7 @@ public class CinemaTest {
         Ticket ticket = cinema.buy(account, 1, 1, date);
     }
 
+    @Ignore
     @Test
     public void find() {
         Cinema cinema = new Cinema3D();
@@ -41,6 +44,7 @@ public class CinemaTest {
         assertThat(sessions, is(Arrays.asList(new Session3D())));
     }
 
+    @Ignore
     @Test
     public void whenSessionDoesNotExist() {
         Cinema cinema = new Cinema3D();
