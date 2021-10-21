@@ -16,6 +16,9 @@ public class Employee {
         this.salary = salary;
     }
 
+    public Employee() {
+    }
+
     public String getName() {
         return name;
     }
