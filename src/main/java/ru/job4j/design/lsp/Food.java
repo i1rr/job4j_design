@@ -5,10 +5,10 @@ import java.time.temporal.ChronoUnit;
 
 public class Food {
     private String name;
-    private LocalDate expiryDate;
-    private LocalDate createDate;
+    private final LocalDate expiryDate;
+    private final LocalDate createDate;
     private float price;
-    private float discount;
+    private final float discount;
     private final long lifetime;
 
     public Food(String name, LocalDate expiryDate, LocalDate createDate,
@@ -30,15 +30,31 @@ public class Food {
         return lifetime;
     }
 
-    public void setDiscount(float discount) {
-        this.discount = price - discount / 100 * price;
-    }
-
     public LocalDate getExpiryDate() {
         return expiryDate;
     }
 
     public float getDiscount() {
         return discount;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public long getDaysLeft() {
+        return ChronoUnit.DAYS.between(LocalDate.now(), getExpiryDate());
+    }
+
+    public float getDifference() {
+        return (float) getDaysLeft() / lifetime;
     }
 }
