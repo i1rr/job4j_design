@@ -10,25 +10,25 @@ public class ParkingMallExternalTest {
 
     @Test
     public void when3car3trucksCanFit() {
-        Parking parking = new ParkingMallExternal(3, 3);
+        Parking parking = new ParkingMall(3, 3);
         List<Vehicle> vehicles = List.of(
-                new Car(), new Car(), new Truck(2),
-                new Truck(2), new Truck(3));
+                new Car(), new Car(), new Car(),
+                new Truck(2), new Truck(2), new Truck(3));
         assertTrue(parking.park(vehicles));
     }
 
     @Test
     public void whenCarsMoreThanSpots() {
-        Parking parking = new ParkingMallExternal(3, 3);
+        Parking parking = new ParkingMall(3, 3);
         List<Vehicle> vehicles = List.of(
-                new Car(), new Car(), new Car(),
+                new Car(), new Car(), new Car(), new Car(),
                 new Truck(2), new Truck(3), new Truck(2));
         assertFalse(parking.park(vehicles));
     }
 
     @Test
-    public void whenNoTruckSpotsButTheyCanFit() {
-        Parking parking = new ParkingMallExternal(5, 0);
+    public void whenNoTruckSpotsButTrucksCanFit() {
+        Parking parking = new ParkingMall(5, 0);
         List<Vehicle> vehicles = List.of(
                 new Truck(2), new Truck(3));
         assertTrue(parking.park(vehicles));
@@ -36,9 +36,10 @@ public class ParkingMallExternalTest {
 
     @Test
     public void whenFreeTruckSpotsButNotForCars() {
-        Parking parking = new ParkingMallExternal(3, 3);
+        Parking parking = new ParkingMall(3, 3);
         List<Vehicle> vehicles = List.of(
                 new Car(), new Car(), new Car(),
-                new Car(), new Truck(3));
+                new Car());
+        assertFalse(parking.park(vehicles));
     }
 }

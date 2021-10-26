@@ -15,7 +15,7 @@ public class Truck implements Vehicle {
     }
 
     @Override
-    public int vehicleType() {
+    public int getVehicleSize() {
         return size;
     }
 }

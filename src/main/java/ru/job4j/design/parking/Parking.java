@@ -3,9 +3,9 @@ package ru.job4j.design.parking;
 import java.util.List;
 
 public interface Parking {
-    int availableCarSpots();
+    Vehicle[] availableCarSpots();
 
-    int availableTruckSpots();
+    Vehicle[] availableTruckSpots();
 
     boolean park(Vehicle vehicle);
 
