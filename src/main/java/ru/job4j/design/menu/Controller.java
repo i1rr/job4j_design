@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Controller {
 
-    private Output out;
+    private final Output out;
 
     public Controller(Output output) {
         this.out = output;
@@ -23,28 +23,30 @@ public class Controller {
 
     public static void main(String[] args) {
         Output out = new OutputConsole();
-        MenuManager menu = new Menu(out, "Start");
+        MenuManager menu = new Menu(out, "Start", new ActionOne());
         Controller ctrl = new Controller(out);
-        menu.getSubMenu().add(new Menu(out, "New Game"));
-        menu.getSubMenu().add(new Menu(out, "New Life"));
-        menu.getSubMenu().add(new Menu(out, "New Job"));
-        menu.getSubMenu().add(new Menu(out, "Old Game"));
-        menu.getSubMenu().add(new Menu(out, "Old Life"));
-        menu.getSubMenu().add(new Menu(out, "Old Job"));
-        menu.findByName("New Game").getSubMenu().add(new Menu(out, "Create Yourself"));
-        menu.findByName("New Game").getSubMenu().add(new Menu(out, "Play as Guest"));
-        menu.findByName("New Life").getSubMenu().add(new Menu(out, "Create Yourself"));
-        menu.findByName("New Life").getSubMenu().add(new Menu(out, "Play as Guest"));
-        menu.findByName("New Job").getSubMenu().add(new Menu(out, "Create Yourself"));
-        menu.findByName("New Job").getSubMenu().add(new Menu(out, "Play as Guest"));
-        menu.findByName("New Game").findByName("Play as Guest").getSubMenu()
-                .add(new Menu(out, "Male"));
-        menu.findByName("New Game").findByName("Play as Guest").getSubMenu()
-                .add(new Menu(out, "Female"));
-        menu.findByName("New Game").findByName("Play as Guest").findByName("Female")
-                .getSubMenu().add(new Menu(out, "Svetlana"));
+        menu.add("Start", "New Game", new ActionOne());
+        menu.add("Start", "New Life", new ActionOne());
+        menu.add("Start", "New Job", new ActionOne());
+        menu.add("Start", "New Wife", new ActionOne());
+        menu.add("Start", "New Car", new ActionOne());
+        menu.add("Start", "New Home", new ActionOne());
+        menu.add("Start", "New Year", new ActionOne());
+        menu.add("Start", "New Whatever", new ActionOne());
 
-        MenuManager menu2 = new Menu(out, "Exit");
+        menu.add("New Game", "Create Yourself", new ActionTwo());
+        menu.add("New Game", "Play as Guest", new ActionTwo());
+        menu.add("New Game", "Create Wife", new ActionTwo());
+        menu.add("New Game", "Create Car", new ActionTwo());
+        menu.add("New Game", "Create Home", new ActionTwo());
+
+        menu.add("Create Home", "Villa", new ActionTwo());
+        menu.add("Create Home", "House", new ActionTwo());
+        menu.add("Create Home", "Apartment", new ActionTwo());
+
+        menu.add("Apartment", "Dvushe4ka", new ActionTwo());
+
+        MenuManager menu2 = new Menu(out, "Exit", new ActionExit());
         List<MenuManager> menuList = List.of(menu, menu2);
         ctrl.printMenu(menuList);
     }
