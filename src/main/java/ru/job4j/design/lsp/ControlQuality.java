@@ -1,5 +1,6 @@
 package ru.job4j.design.lsp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControlQuality {
@@ -17,6 +18,15 @@ public class ControlQuality {
                         storage.allocate(food);
                     }
                 }));
+    }
+
+    public void reSort() {
+        List<Food> foodList = new ArrayList<>();
+        storageList.forEach(storage -> {
+            foodList.addAll(storage.getFoodList());
+            storage.getFoodList().clear();
+                });
+        executeAllocation(foodList);
     }
 
     public List<Storage> getStorageList() {

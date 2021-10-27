@@ -62,4 +62,25 @@ public class ControlQualityTest {
 
         assertThat(cq.getStorageList().get(2).getFoodList().get(0).getName(), is("Noodles"));
     }
+
+    @Test
+    public void whenResort() {
+        Food dumplings = new Dumplings("Dumplings",
+                LocalDate.of(2021, Month.NOVEMBER, 30),
+                LocalDate.of(2021, Month.OCTOBER, 1),
+                25, 10);
+
+        Food noodles = new Noodles("Noodles",
+                LocalDate.of(2021, Month.OCTOBER, 1),
+                LocalDate.of(2020, Month.OCTOBER, 1),
+                25, 10);
+
+        ControlQuality cq = new ControlQuality(List.of(new Shop(), new Warehouse(), new Trash()));
+        cq.getStorageList().get(2).allocate(dumplings);
+        cq.getStorageList().get(0).allocate(noodles);
+        cq.reSort();
+
+        assertThat(cq.getStorageList().get(0).getFoodList().get(0).getName(), is("Dumplings"));
+        assertThat(cq.getStorageList().get(2).getFoodList().get(0).getName(), is("Noodles"));
+    }
 }
